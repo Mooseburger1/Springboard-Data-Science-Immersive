@@ -1,3 +1,5 @@
+* Note: this is the same explanation as written in the worked JUPYTER NOTEBOOK. However the images contained in this README are not rendering properly in the Jupyter Notebook as hosted on Github. The Notebook, however will contain hyperlinks within itself to each worked section with code and functions as applied. 
+
 # Is 98.6 Degrees Optimal? An EDA of Human Body Temperature
 #### Given a population sample of 130 body temperatures, what can we infer about the population?
 ********************************
