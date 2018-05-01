@@ -15,17 +15,6 @@
     "from scipy.stats import *\n",
     "from datetime import datetime as dt"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 2,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "df2 = pd.read_csv('historical_pricing.csv', header = [0,1]).rename(columns = {'Unnamed: 0_level_1':'Date'}).iloc[1:,:]\n",
-    "df2 = df2.set_index(pd.DatetimeIndex(df2.Coin.Date))\n",
-    "df2.head()"
-   ]
   }
  ],
  "metadata": {},
