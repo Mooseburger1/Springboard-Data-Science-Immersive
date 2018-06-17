@@ -1,0 +1,704 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Web+Scraper}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Websites}\label{websites}
+
+\begin{itemize}
+\tightlist
+\item
+  Forbes.com
+\item
+  CNBC.com
+\item
+  Cointelegraph.com
+\item
+  Bitcoin.com
+\item
+  Coindesk.com
+\end{itemize}
+
+    There are several sources for news relating to cryptocurrencies. However
+when extracting meaningful data, it must come from a meaningful
+reputable source. As such, the 5 websites listed above were selected to
+extract quality data. Cointelegraph, Bitcoin, and Coindesk were the
+highested rated cryptocurrency specific news sources. Conversely, Forbes
+and CNBC are in their own right reputable news sources, not specifically
+related to the cryptocurrency world. They are incorporated in order to
+give a well rounded data source.
+
+    \subsubsection{Turned off SSL verification so Python will throw a bunch
+of warngings - Turn off those
+warnings}\label{turned-off-ssl-verification-so-python-will-throw-a-bunch-of-warngings---turn-off-those-warnings}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{k+kn}{import} \PY{n+nn}{warnings}
+         \PY{n}{warnings}\PY{o}{.}\PY{n}{filterwarnings}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ignore}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \subsubsection{Create a class to help scrape
+websites}\label{create-a-class-to-help-scrape-websites}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}114}]:} \PY{k+kn}{from} \PY{n+nn}{bs4} \PY{k}{import} \PY{n}{BeautifulSoup}
+          \PY{k+kn}{from} \PY{n+nn}{bs4}\PY{n+nn}{.}\PY{n+nn}{element} \PY{k}{import} \PY{n}{Comment}
+          \PY{k+kn}{import} \PY{n+nn}{requests}
+          \PY{k+kn}{import} \PY{n+nn}{re}
+          \PY{k+kn}{from} \PY{n+nn}{datetime} \PY{k}{import} \PY{n}{datetime}
+          
+          
+          \PY{k}{class} \PY{n+nc}{parse\PYZus{}web\PYZus{}page}\PY{p}{:}
+              \PY{c+c1}{\PYZsh{}constructor}
+              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,}\PY{n}{url}\PY{p}{,}\PY{n}{website}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{try}\PY{p}{:}
+                      \PY{c+c1}{\PYZsh{}Make a request to the url and read in the webpage, set SSL verificaiton to False (not transmitting sensitive info)}
+                      \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{html} \PY{o}{=} \PY{n}{requests}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{n}{url}\PY{p}{,} \PY{n}{verify} \PY{o}{=} \PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{text}
+                      \PY{c+c1}{\PYZsh{}Make soup!}
+                      \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup} \PY{o}{=} \PY{n}{BeautifulSoup}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{html}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{html.parser}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                      \PY{c+c1}{\PYZsh{}Extract all text from the website}
+                      \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{text} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{get\PYZus{}text}\PY{p}{(}\PY{p}{)}
+                      \PY{c+c1}{\PYZsh{}Set flags depending on which website is being processed}
+                      \PY{k}{if} \PY{n}{website} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{forbes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                          \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{=} \PY{l+m+mi}{1}
+                      \PY{k}{if} \PY{n}{website} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cnbc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                          \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{=} \PY{l+m+mi}{2}
+                      \PY{k}{if} \PY{n}{website} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cointelegraph}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                          \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{=} \PY{l+m+mi}{3}
+                      \PY{k}{if} \PY{n}{website} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bitcoin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                          \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{=} \PY{l+m+mi}{4}
+                      \PY{k}{if} \PY{n}{website} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{coindesk}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                          \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{=} \PY{l+m+mi}{5}
+                  \PY{k}{except}\PY{p}{:}
+                      \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Please enter a valid URL; }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{url}\PY{p}{)}\PY{p}{)}
+                      
+                      
+              \PY{k}{def} \PY{n+nf}{page\PYZus{}numbers}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{}ONLY FOR FORBES SITES \PYZhy{} Forbes websites has multiple pages for their articles}
+                  \PY{c+c1}{\PYZsh{}Extract how many pages there are for an article}
+                  \PY{k}{try}\PY{p}{:}
+                      \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o+ow}{is} \PY{l+m+mi}{1}\PY{p}{:}
+                          \PY{c+c1}{\PYZsh{}Example of Match Pattern: \PYZsq{}Page 1 / 3\PYZsq{}}
+                          \PY{c+c1}{\PYZsh{}Search for pattern and return last value as total pages for the article}
+                          \PY{n}{total\PYZus{}pages} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{findall}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Page}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{s[0\PYZhy{}9]}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{s/}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{s([0\PYZhy{}9])}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{text}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                          \PY{k}{return} \PY{n+nb}{int}\PY{p}{(}\PY{n}{total\PYZus{}pages}\PY{p}{)}
+                      \PY{k}{else}\PY{p}{:}
+                          \PY{k}{return} \PY{k+kc}{None}
+                  \PY{k}{except}\PY{p}{:}
+                      \PY{k}{return} \PY{k+kc}{None}
+                  
+              \PY{k}{def} \PY{n+nf}{get\PYZus{}headline}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{}Extract the headline of the article}
+                  \PY{c+c1}{\PYZsh{}Headlines for Coindesk articles are under the \PYZlt{}title\PYZgt{} tag}
+                  \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o+ow}{is} \PY{l+m+mi}{5}\PY{p}{:}
+                      \PY{n}{headline} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{title}\PY{o}{.}\PY{n}{text}
+                  \PY{c+c1}{\PYZsh{}Headlines for all other websites are under the \PYZlt{}h1\PYZgt{} tag}
+                  \PY{k}{else}\PY{p}{:}
+                      \PY{n}{headline} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{h1}\PY{o}{.}\PY{n}{text}
+                  \PY{k}{return} \PY{n}{headline}
+              
+              \PY{k}{def} \PY{n+nf}{date\PYZus{}and\PYZus{}time}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{}Forbes date and time}
+                  \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                      \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}date = re.search(\PYZsq{}[A\PYZhy{}Za\PYZhy{}z]\PYZob{}3\PYZcb{}\PYZbs{}s[0\PYZhy{}9]+,\PYZbs{}s[0\PYZhy{}9]\PYZob{}4\PYZcb{}\PYZbs{}s@\PYZbs{}s[0\PYZhy{}9]+:[0\PYZhy{}9]\PYZob{}2\PYZcb{}\PYZbs{}s[A\PYZhy{}Z]\PYZob{}2\PYZcb{}\PYZsq{},self.text)}
+          \PY{l+s+sd}{            date\PYZus{}time\PYZus{}object = date.group().split(\PYZsq{}@\PYZsq{})}
+          \PY{l+s+sd}{            date\PYZus{}time = datetime.strptime(\PYZsq{}\PYZsq{}.join(date\PYZus{}time\PYZus{}object).replace(\PYZsq{},\PYZsq{},\PYZsq{}\PYZsq{}), \PYZsq{}\PYZpc{}b \PYZpc{}d \PYZpc{}Y  \PYZpc{}I:\PYZpc{}M \PYZpc{}p\PYZsq{})\PYZsq{}\PYZsq{}\PYZsq{}}
+                      \PY{n}{date} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{time}\PY{o}{.}\PY{n}{text}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+                      \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{n}{date}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{b }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y  }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{I:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{p}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+          
+                      \PY{k}{return} \PY{n}{date\PYZus{}time}
+                  \PY{c+c1}{\PYZsh{}CNBC date and time}
+                  \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+                      \PY{n}{date\PYZus{}time\PYZus{}object} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{time}\PY{o}{.}\PY{n}{text}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{p}{)}
+                      
+                      \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{date\PYZus{}time\PYZus{}object}\PY{p}{)} \PY{o}{!=} \PY{l+m+mi}{8}\PY{p}{:}
+                          \PY{n}{order} \PY{o}{=}  \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}
+                          \PY{n}{day} \PY{o}{=} \PY{p}{[}\PY{n}{date\PYZus{}time\PYZus{}object}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{order}\PY{p}{]}
+                          \PY{k}{try}\PY{p}{:}
+                              \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{day}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{b }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{, }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{I:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{p}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                          \PY{k}{except}\PY{p}{:}
+                              \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{day}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{B }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{, }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{I:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{p}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                          \PY{k}{return} \PY{n}{date\PYZus{}time}
+                      \PY{k}{else}\PY{p}{:}
+                          \PY{n}{order} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}
+                          \PY{n}{date\PYZus{}time\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{date\PYZus{}time\PYZus{}object}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{order}\PY{p}{]}
+                          \PY{k}{try}\PY{p}{:}
+                              \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{date\PYZus{}time\PYZus{}list}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{b }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{I:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{p}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                          \PY{k}{except}\PY{p}{:}
+                              \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{date\PYZus{}time\PYZus{}list}\PY{p}{)}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{B }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{I:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{p}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                          \PY{k}{return} \PY{n}{date\PYZus{}time}
+                  \PY{c+c1}{\PYZsh{}Cointelegraph date and time}
+                  \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
+                      \PY{n}{tag} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{div}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{class\PYZus{}} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                      \PY{n}{date\PYZus{}time\PYZus{}object} \PY{o}{=} \PY{n}{tag}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{datetime}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+                      \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{n}{date\PYZus{}time\PYZus{}object}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{S}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                      \PY{k}{return} \PY{n}{date\PYZus{}time}
+                  
+                  \PY{c+c1}{\PYZsh{}Coindesk date and time}
+                  \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
+                      \PY{n}{date\PYZus{}time\PYZus{}object} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{n}{attrs}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{class}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{article\PYZhy{}container\PYZhy{}left\PYZhy{}timestamp}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{text}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{UTC}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{at}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                      \PY{n}{d} \PY{o}{=} \PY{n}{date\PYZus{}time\PYZus{}object}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{p}{)}
+                      \PY{n}{idx} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}
+                      \PY{n}{date\PYZus{}time\PYZus{}object} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n}{d}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{idx}\PY{p}{]}\PY{p}{)}
+                      \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{n}{date\PYZus{}time\PYZus{}object}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{b }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                      \PY{k}{return} \PY{n}{date\PYZus{}time}
+          
+                  \PY{c+c1}{\PYZsh{}Bitcoin date and time}
+                  \PY{k}{if} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{flag} \PY{o}{==}  \PY{l+m+mi}{4}\PY{p}{:}
+                      \PY{n}{tag} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{time}
+                      \PY{n}{date\PYZus{}time\PYZus{}object} \PY{o}{=} \PY{n}{tag}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{datetime}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{T}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{+}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                      \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{datetime}\PY{o}{.}\PY{n}{strptime}\PY{p}{(}\PY{n}{date\PYZus{}time\PYZus{}object}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{H:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{M:}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{S}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                      \PY{k}{return} \PY{n}{date\PYZus{}time}
+          
+              \PY{k}{def} \PY{n+nf}{raw\PYZus{}text}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{}Extract all \PYZlt{}p\PYZgt{} tags from articles \PYZhy{} actual text of each website}
+                  \PY{n}{p\PYZus{}tags} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{soup}\PY{o}{.}\PY{n}{find\PYZus{}all}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{p}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                  \PY{c+c1}{\PYZsh{}create a list of all found \PYZlt{}p\PYZgt{} tags}
+                  \PY{n}{text} \PY{o}{=} \PY{p}{[}\PY{n}{item}\PY{o}{.}\PY{n}{text} \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{p\PYZus{}tags}\PY{p}{]}
+                  \PY{c+c1}{\PYZsh{}Join all \PYZlt{}p\PYZgt{} tags to reconstruct the paragraphs of the articles}
+                  \PY{k}{return}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{text}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \subsubsection{Create an a function that will read in a URL, retrieve
+that URL, scrape the HTML and write the appropriate data to a CSV
+file}\label{create-an-a-function-that-will-read-in-a-url-retrieve-that-url-scrape-the-html-and-write-the-appropriate-data-to-a-csv-file}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{k+kn}{import} \PY{n+nn}{csv}
+         \PY{k+kn}{from} \PY{n+nn}{tqdm} \PY{k}{import} \PY{n}{tqdm}
+         
+         \PY{k}{def} \PY{n+nf}{scrape\PYZus{}articles}\PY{p}{(}\PY{n}{urls}\PY{p}{,} \PY{n}{coin}\PY{p}{,} \PY{n}{website} \PY{o}{=} \PY{k+kc}{None}\PY{p}{,} \PY{n}{path} \PY{o}{=} \PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+             
+             
+             \PY{c+c1}{\PYZsh{}Closure function ONLY FOR FORBES SITES \PYZhy{} Used to extract all other pages in the forbes articles and concat them all}
+             \PY{k}{def} \PY{n+nf}{get\PYZus{}other\PYZus{}pages}\PY{p}{(}\PY{n}{url}\PY{p}{,}\PY{n}{num\PYZus{}of\PYZus{}pages}\PY{p}{,}\PY{n}{page\PYZus{}1}\PY{p}{,}\PY{n}{website}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{lst} \PY{o}{=} \PY{p}{[}\PY{n}{page\PYZus{}1}\PY{p}{]}
+                 \PY{n}{list\PYZus{}of\PYZus{}pages} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}of\PYZus{}pages}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}
+                 \PY{n}{url\PYZus{}of\PYZus{}pages} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n}{url}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{n}{page}\PY{p}{)}\PY{p}{]}\PY{p}{)} \PY{k}{for} \PY{n}{page} \PY{o+ow}{in} \PY{n}{list\PYZus{}of\PYZus{}pages}\PY{p}{]}
+                 \PY{k}{for} \PY{n}{url} \PY{o+ow}{in} \PY{n}{url\PYZus{}of\PYZus{}pages}\PY{p}{:}
+                     \PY{n}{web\PYZus{}page} \PY{o}{=} \PY{n}{parse\PYZus{}web\PYZus{}page}\PY{p}{(}\PY{n}{url}\PY{p}{,}\PY{n}{website}\PY{p}{)}
+                     \PY{n}{text} \PY{o}{=} \PY{n}{web\PYZus{}page}\PY{o}{.}\PY{n}{raw\PYZus{}text}\PY{p}{(}\PY{p}{)}
+                     \PY{n}{lst}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{text}\PY{p}{)}
+                 \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{lst}\PY{p}{)}
+         
+             
+             \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{path}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{newline}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{file}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{}Create a csv writer object}
+                 \PY{n}{csv\PYZus{}writer} \PY{o}{=} \PY{n}{csv}\PY{o}{.}\PY{n}{writer}\PY{p}{(}\PY{n}{file}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{}Write the headers to the csv file}
+                 \PY{n}{csv\PYZus{}writer}\PY{o}{.}\PY{n}{writerow}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{website}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Headline}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Text}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Link}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+                 
+                 \PY{k}{for} \PY{n}{url} \PY{o+ow}{in} \PY{n}{tqdm}\PY{p}{(}\PY{n}{urls}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{try}\PY{p}{:}
+                         \PY{k}{if} \PY{n}{website} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                             \PY{c+c1}{\PYZsh{}If not given explicitly, extract the website from the url address}
+                             \PY{c+c1}{\PYZsh{}Used for all except Bitcoin and Cointelegraph}
+                             \PY{n}{website} \PY{o}{=} \PY{n}{url}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+                         \PY{c+c1}{\PYZsh{}Create web page object from class above}
+                         \PY{n}{page} \PY{o}{=} \PY{n}{parse\PYZus{}web\PYZus{}page}\PY{p}{(}\PY{n}{url}\PY{p}{,}\PY{n}{website}\PY{p}{)}
+                         \PY{c+c1}{\PYZsh{}Get paragraphs of the article}
+                         \PY{n}{text} \PY{o}{=} \PY{n}{page}\PY{o}{.}\PY{n}{raw\PYZus{}text}\PY{p}{(}\PY{p}{)}
+                         \PY{c+c1}{\PYZsh{}Get date and time of the article}
+                         \PY{n}{date\PYZus{}time} \PY{o}{=} \PY{n}{page}\PY{o}{.}\PY{n}{date\PYZus{}and\PYZus{}time}\PY{p}{(}\PY{p}{)}
+                         \PY{c+c1}{\PYZsh{}Get the headline of the article}
+                         \PY{n}{headline} \PY{o}{=} \PY{n}{page}\PY{o}{.}\PY{n}{get\PYZus{}headline}\PY{p}{(}\PY{p}{)}
+                         \PY{c+c1}{\PYZsh{}Get total number of pages in the article \PYZhy{} FORBES ONLY}
+                         \PY{n}{num\PYZus{}of\PYZus{}pages} \PY{o}{=} \PY{n}{page}\PY{o}{.}\PY{n}{page\PYZus{}numbers}\PY{p}{(}\PY{p}{)}
+                         
+                         \PY{c+c1}{\PYZsh{}Get other Forbes pages and concat them}
+                         \PY{k}{if} \PY{n}{num\PYZus{}of\PYZus{}pages} \PY{o+ow}{is} \PY{o+ow}{not} \PY{k+kc}{None}\PY{p}{:}
+                             \PY{n}{text} \PY{o}{=} \PY{n}{get\PYZus{}other\PYZus{}pages}\PY{p}{(}\PY{n}{url}\PY{p}{,}\PY{n}{num\PYZus{}of\PYZus{}pages}\PY{p}{,}\PY{n}{text}\PY{p}{,}\PY{n}{website}\PY{p}{)}
+                         \PY{c+c1}{\PYZsh{}Write values to csv file}
+                         \PY{n}{csv\PYZus{}writer}\PY{o}{.}\PY{n}{writerow}\PY{p}{(}\PY{p}{[}\PY{n}{date\PYZus{}time}\PY{p}{,} \PY{n}{coin}\PY{p}{,} \PY{n}{website}\PY{p}{,} \PY{n}{headline}\PY{p}{,} \PY{n}{text}\PY{p}{,} \PY{n}{url}\PY{p}{]}\PY{p}{)}
+                     \PY{k}{except}\PY{p}{:}
+                         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Could Not Process: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{url}\PY{p}{)}\PY{p}{)}
+                 \PY{k}{return} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Done Writing File}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    From each website listed above, a list of URLs to various articles of
+interest from each site was composed. These URLS will now be fed through
+"scrape\_articles" function in order to be scraped and the resulting
+data written to CSV files
+
+    \subsubsection{Create a list of the Forbes.com
+links}\label{create-a-list-of-the-forbes.com-links}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}Forbes.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{fh}\PY{p}{:}
+             \PY{n}{file} \PY{o}{=} \PY{n}{fh}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+             \PY{n}{urls\PYZus{}Forbes} \PY{o}{=} \PY{p}{[}\PY{n}{link}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{link} \PY{o+ow}{in} \PY{n}{file}\PY{p}{]}
+\end{Verbatim}
+
+
+    \subsubsection{Create a list of the CNBC.com
+links}\label{create-a-list-of-the-cnbc.com-links}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}CNBC.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{fh}\PY{p}{:}
+             \PY{n}{file} \PY{o}{=} \PY{n}{fh}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+             \PY{n}{urls\PYZus{}CNBC} \PY{o}{=} \PY{p}{[}\PY{n}{link}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{link} \PY{o+ow}{in} \PY{n}{file}\PY{p}{]}
+\end{Verbatim}
+
+
+    \subsubsection{Create a list of the Coindesk.com
+links}\label{create-a-list-of-the-coindesk.com-links}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}coindesk.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{fh}\PY{p}{:}
+             \PY{n}{file} \PY{o}{=} \PY{n}{fh}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+             \PY{n}{urls\PYZus{}Coindesk} \PY{o}{=} \PY{p}{[}\PY{n}{link}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{link} \PY{o+ow}{in} \PY{n}{file}\PY{p}{]}
+\end{Verbatim}
+
+
+    \subsubsection{Create a list of the Cointelegraph.com
+links}\label{create-a-list-of-the-cointelegraph.com-links}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}cointelegraph.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{fh}\PY{p}{:}
+             \PY{n}{file} \PY{o}{=} \PY{n}{fh}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+             \PY{n}{urls\PYZus{}Cointelegraph} \PY{o}{=} \PY{p}{[}\PY{n}{link}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{link} \PY{o+ow}{in} \PY{n}{file}\PY{p}{]}
+\end{Verbatim}
+
+
+    \subsubsection{Create a list of the Bitcoin.com
+links}\label{create-a-list-of-the-bitcoin.com-links}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}bitcoin.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{fh}\PY{p}{:}
+             \PY{n}{file} \PY{o}{=} \PY{n}{fh}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}
+             \PY{n}{urls\PYZus{}Bitcoin} \PY{o}{=} \PY{p}{[}\PY{n}{link}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)} \PY{k}{for} \PY{n}{link} \PY{o+ow}{in} \PY{n}{file}\PY{p}{]}
+\end{Verbatim}
+
+
+    \section{Create CSV of all Forbes.com
+articles}\label{create-csv-of-all-forbes.com-articles}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{n}{scrape\PYZus{}articles}\PY{p}{(}\PY{n}{urls\PYZus{}Forbes}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}Forbes.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ 76\%|███████▌  | 38/50 [00:25<00:07,  1.51it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Could Not Process: 
+https://www.forbes.com/sites/davidthier/2018/01/16/i-just-lost-3000-investing-in-ripple-and-tron-and-its-a-dangerous-feeling/
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100\%|██████████| 50/50 [00:35<00:00,  1.42it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Done Writing File
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+    \end{Verbatim}
+
+    \section{Create CSV of all CNBC.com
+articles}\label{create-csv-of-all-cnbc.com-articles}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{scrape\PYZus{}articles}\PY{p}{(}\PY{n}{urls\PYZus{}CNBC}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}CNBC.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ 47\%|████▋     | 17/36 [00:09<00:10,  1.80it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Could Not Process: 
+https://www.cnbc.com/2017/09/11/ripple-ceo-brad-garlinghouse-on-bitcoin-and-xrp.html
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ 86\%|████████▌ | 31/36 [00:18<00:02,  1.68it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Could Not Process: 
+https://www.cnbc.com/2018/03/28/ripple-donates-29-million-after-donorschoose-org-founder-dared-himself-to-ask.html
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100\%|██████████| 36/36 [00:20<00:00,  1.71it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Done Writing File
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+    \end{Verbatim}
+
+    \section{Create CSV of all Coindesk.com
+articles}\label{create-csv-of-all-coindesk.com-articles}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}115}]:} \PY{n}{scrape\PYZus{}articles}\PY{p}{(}\PY{n}{urls\PYZus{}Coindesk}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}coindesk.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100\%|██████████| 64/64 [00:18<00:00,  3.53it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Done Writing File
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+    \end{Verbatim}
+
+    \section{Create CSV of all Cointelegraph.com
+articles}\label{create-csv-of-all-cointelegraph.com-articles}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{scrape\PYZus{}articles}\PY{p}{(}\PY{n}{urls\PYZus{}Cointelegraph}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{website} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cointelegraph}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}cointelegraph.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100\%|██████████| 123/123 [01:27<00:00,  1.41it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Please enter a valid URL; 
+Could Not Process: 
+
+Please enter a valid URL; 
+Could Not Process: 
+
+Done Writing File
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+    \end{Verbatim}
+
+    \section{Create CSV of all Bitcoin.com
+articles}\label{create-csv-of-all-bitcoin.com-articles}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{scrape\PYZus{}articles}\PY{p}{(}\PY{n}{urls\PYZus{}Bitcoin}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{website} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bitcoin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Ripple\PYZus{}bitcoin.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100\%|██████████| 21/21 [00:12<00:00,  1.69it/s]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Done Writing File
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
