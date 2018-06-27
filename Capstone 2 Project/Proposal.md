@@ -1,4 +1,4 @@
-# Capstone One Project Proposal
+# Capstone Two Project Proposal
 
 **Title:** Object Detection From Video
 
