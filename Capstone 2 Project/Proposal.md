@@ -7,7 +7,7 @@
 **Who might care?** The following could be a potential target of this type of technology and isn't all inclusive:
 * Consumers who see something and would want to buy instantly by simply touching the screen. This ideally would trigger an image search which would return either the exact item or something similar
 * People who desire interactiving information e.g. as the simplest example, touching the face of an actor and their imdb page populates
-* Businesses who want to better reach their targeted demographic. By the tech aggregating statistics on what the user is watching, statistics could be aggregated on what type of ads they'd be more inclined to watch instead of flipping the channel
+* Businesses who want to better reach their targeted demographic. With the tech recognizing and keeping details on what the user is watching, statistics could be aggregated on what type of ads they'd be more inclined to watch instead of flipping the channel
 
 **Data:** ImageNet, who sponsors a yearly competition has aggregated over 500gb of labeled video. This can be utilized for model training
 
@@ -18,11 +18,11 @@
 **Deliverables:** 
 1.    Codes (notebooks) for:
 
-	a.	Data Preprocessing
+	a. Data Preprocessing
 	
-	c.    EDA - Exploratory Data Analysis and Feature Engineering
+	c. EDA - Exploratory Data Analysis and Feature Engineering
 	
-	d.	Tensorflow Convolutional Neural Network
+	d. Tensorflow Convolutional Neural Network
 	
 2.    Report on the capstone project
 3.    Presentation on the capstone project
