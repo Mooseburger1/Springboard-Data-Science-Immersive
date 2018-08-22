@@ -1,5 +1,5 @@
 # Springboard-Data-Science-Immersive
-This repository will house all code, data, and files related to my work in the Springboard Data Science Immersive program
+This repository will house all code, data, and files related to my work in the Springboard Data Science Immersive program. The following acts as a table of contents for the whole repository with links to the respective work cited
 
 # Capstone 1
 ----------------------
@@ -64,3 +64,47 @@ Several EDA's performed on varying data categories. Hospital Readmittance perfor
 * Naive Bayes
 
 Performing several Machine Learning Algorithms in miniprojects such as: Labeling an obersvation as either male or female based on height and weight data (Logistic Regression), Regression Price Estimate on Boston Housing data using Linear Regression, and predicting movie reviews with Naive Bayes Models
+
+# PYSPARK
+## [MapReduce with Pyspark](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/spark/pyspark_exercise.ipynb)
+
+Performing several exercises utlitizing MapReduce Pyspark (RDD) with a touch of MLlib
+**Key Skills**
+* Pyspark
+* RDD
+* Spark Dataframes
+
+# SQL
+## [Yammer SQL Case Study](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/SQL/Yammer%20Case%20Study/Yammer%20Case%20Study.ipynb)
+**Key Skills**
+* SQL 
+* Time Series Analysis
+* Applied Plotting and Charting
+
+This is a SQL case study as proposed from Mode Analytics at https://modeanalytics.com/. The Jupyter notebook in this repository is a cleaned up verison of the original case study which contains all original SQL queries, and can be found here: https://modeanalytics.com/mooseburger/reports/14cbbb5670b8
+
+# JSON
+## [Data Wrangling with JSON](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/tree/master/data_wrangling_json)
+
+**Key Skills**
+* JSON Manipulation and Extraction
+* Applied Plotting and Charting
+
+An exercise of data extraction and exploration utilizing a JSON data source
+
+# Take Home Data Challenges
+## [Relax Chalenge](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/relax_challenge/Relax%20Challenge.ipynb)
+## [Ultimate Challenge Parts 1 & 2](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/ultimate_challenge/Part%201%20%26%202%20-%20Logins%20EDA%20%7C%20Statistical%20Testing.ipynb)
+## [Ultimate Challange Part 3](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/ultimate_challenge/Part%203%20-%20Ultimate%20Users%20Data.ipynb)
+
+**Key Skills**
+* Full Stack Data Scientist
+
+**Relax Challenge** - Defining an "adopted user" as a user who has logged into a product on three separate days in at least one seven-day period, identify which factors predict future user adoption. You are given two datasets
+1. A user table ("takehome_users") with data on 12,000 users who signed up for the product in the last two years
+2. A usage summary table ("takehome_user_engagement") that has a row for each day that a user logged into the product.
+
+**Ultimate Challenge** 
+* Part   1  ‐ Exploratory data analysis 
+* Part 2  ‐ Experiment   and   metrics   design 
+* Part 3 - Predictive Modelling
