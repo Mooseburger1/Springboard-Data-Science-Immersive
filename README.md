@@ -1,5 +1,5 @@
 # Springboard-Data-Science-Immersive
-This repository will house all code, data, and files related to my work in the Springboard Data Science Immersive program
+This repository will house all code, data, and files related to my work in the Springboard Data Science Immersive program. The following acts as a table of contents for the whole repository with links to the respective work cited
 
 # Capstone 1
 ----------------------
