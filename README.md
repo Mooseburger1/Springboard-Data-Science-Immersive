@@ -37,7 +37,7 @@ This repository will house all code, data, and files related to my work in the S
 * PCA - Principle Component Analysis
 * Elbow Sum of Squares Method
 
-Mini project on customer segmentation and being able to identify different types of customers and then figure out ways to find more of those individuals so you can get more customers! The data comes from John Foreman's book Data Smart. The dataset contains both information on marketing newsletters/e-mail campaigns (e-mail offers sent) and transaction level data from customers (which offer customers responded to and what they bought).
+**Mini project on customer segmentation and being able to identify different types of customers and then figure out ways to find more of those individuals so you can get more customers! The data comes from John Foreman's book Data Smart. The dataset contains both information on marketing newsletters/e-mail campaigns (e-mail offers sent) and transaction level data from customers (which offer customers responded to and what they bought).**
 
 # Exploratory Data Analysis' (EDA)
 --------------------------------
@@ -54,7 +54,7 @@ Mini project on customer segmentation and being able to identify different types
 * Chi-Squared Test
 * Bootstrap Statistics
 
-Several EDA's performed on varying data categories. Hospital Readmittance performs a statistical analysis on a previously done analysis to critique its validity. Human Temperature EDA uses bootstrap statistics to determine the true average temperature of the human body in both male and females. Racial Discrimination performs a statistical analysis on if race has a meaningful impact on the callback rate of candidates who have submitted resumes to jobs of interest.
+**Several EDA's performed on varying data categories. Hospital Readmittance performs a statistical analysis on a previously done analysis to critique its validity. Human Temperature EDA uses bootstrap statistics to determine the true average temperature of the human body in both male and females. Racial Discrimination performs a statistical analysis on if race has a meaningful impact on the callback rate of candidates who have submitted resumes to jobs of interest.**
 
 # Machine Learning Algorithms
 ## [Linear Regression](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/tree/master/linear_regression)
@@ -65,12 +65,13 @@ Several EDA's performed on varying data categories. Hospital Readmittance perfor
 * Linear Regression
 * Naive Bayes
 
-Performing several Machine Learning Algorithms in miniprojects such as: Labeling an obersvation as either male or female based on height and weight data (Logistic Regression), Regression Price Estimate on Boston Housing data using Linear Regression, and predicting movie reviews with Naive Bayes Models
+**Performing several Machine Learning Algorithms in miniprojects such as: Labeling an obersvation as either male or female based on height and weight data (Logistic Regression), Regression Price Estimate on Boston Housing data using Linear Regression, and predicting movie reviews with Naive Bayes Models**
 
 # PYSPARK
 ## [MapReduce with Pyspark](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/spark/pyspark_exercise.ipynb)
 
-Performing several exercises utlitizing MapReduce Pyspark (RDD) with a touch of MLlib
+**Performing several exercises utlitizing MapReduce Pyspark (RDD) with a touch of MLlib**
+
 **Key Skills**
 * Pyspark
 * RDD
@@ -83,7 +84,7 @@ Performing several exercises utlitizing MapReduce Pyspark (RDD) with a touch of 
 * Time Series Analysis
 * Applied Plotting and Charting
 
-This is a SQL case study as proposed from Mode Analytics at https://modeanalytics.com/. The Jupyter notebook in this repository is a cleaned up verison of the original case study which contains all original SQL queries, and can be found here: https://modeanalytics.com/mooseburger/reports/14cbbb5670b8
+**This is a SQL case study as proposed from Mode Analytics at https://modeanalytics.com/. The Jupyter notebook in this repository is a cleaned up verison of the original case study which contains all original SQL queries, and can be found here: https://modeanalytics.com/mooseburger/reports/14cbbb5670b8**
 
 # JSON
 ## [Data Wrangling with JSON](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/tree/master/data_wrangling_json)
@@ -92,7 +93,7 @@ This is a SQL case study as proposed from Mode Analytics at https://modeanalytic
 * JSON Manipulation and Extraction
 * Applied Plotting and Charting
 
-An exercise of data extraction and exploration utilizing a JSON data source
+**An exercise of data extraction and exploration utilizing a JSON data source**
 
 # Take Home Data Challenges
 ## [Relax Chalenge](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/relax_challenge/Relax%20Challenge.ipynb)
