@@ -1,6 +1,8 @@
 # Springboard-Data-Science-Immersive
 This repository will house all code, data, and files related to my work in the Springboard Data Science Immersive program. The following acts as a table of contents for the whole repository with links to the respective work cited
 
+<img src="https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/blob/master/Capstone%202%20Project/images/collage.png"></img>
+
 # Capstone 1
 ----------------------
 ## [Facilitation of Cryptocurrency Price Prediction by Sentiment Analysis](https://github.com/Mooseburger1/Springboard-Data-Science-Immersive/tree/master/Capstone%201%20Project)
